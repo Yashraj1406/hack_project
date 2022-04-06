@@ -1,0 +1,83 @@
+.performance{
+    padding-top:100px;
+    margin: 5% 0%;
+    width: 100%;
+    height: 50px;
+}
+
+.performance h2{
+    font-size:2rem;
+    font-weight:normal;
+    margin-bottom: 20px;
+}
+
+.row1{
+    /* height: 50px; */
+    margin-left: -3.8%;
+    margin-bottom:5%;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
+.row2{
+    margin-left: -3%;
+    margin-bottom:5%;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
+.row1 p{
+    font-size:18px;
+}
+
+.row2 p{
+    font-size:18px;
+}
+
+
+.txt{
+    line-height: 1.5rem;
+    padding:0% 3% 0% 3%;
+}
+
+.stats{
+    margin-left: -2%;
+    align-items: center;
+    justify-content: space-between;
+    width:96.5%;
+    display: inline-flex;
+    padding-bottom:50px;
+}
+
+.elem {
+    font-size: 18px;
+    line-height: 2rem;
+    padding-left:20px;
+}
+
+/* .tooltip{ 
+    position:relative;
+    float:right;
+  }
+  .tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}
+  .popOver + .tooltip > .tooltip-arrow {	border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;}
+  
+  section{
+    margin:100px auto; 
+    height:1000px;
+  }
+  .progress{
+    border-radius:0;
+    overflow:visible;
+  }
+  .progress-bar{
+     background:rgb(23,44,60); 
+    -webkit-transition: width 1.5s ease-in-out;
+    transition: width 1.5s ease-in-out;
+  } */

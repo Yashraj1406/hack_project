@@ -1,0 +1,73 @@
+.Profile{
+    display: block;
+}
+
+div {
+    display: block;
+}
+
+.twitter_embedding{
+    margin-top: 100px;
+    align-items:center;
+    /* display: inline-flex; */
+}
+
+.twitter_embedding h2{
+    font-size:2rem;
+    font-weight:normal;
+    margin-bottom:50px;
+}
+
+.data {
+    padding: 50px 280px 50px 250px;
+}
+
+.tweets {
+    width: 100%;
+    display: inline-flex;
+}
+
+.TimeSeries{
+margin-top:40px;}
+
+.sentiment {
+    padding: 180px 0px 100px 100px;
+    width: 30%;
+}
+
+.embed {
+    width: 70%;
+}
+
+
+/* .vspace-between {
+    justify-content: space-between;
+}
+
+.valign-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.clrSubText {
+    color: var(--subText);
+}
+
+.fs12, .fs14 {
+    letter-spacing: .01em;
+    line-height: 160%;
+}
+
+.fs12 {
+    font-size: .75rem;
+}
+
+.usph14Sector {
+    margin-top: 4px;
+    padding: 3px 8px;
+    cursor: auto;
+    min-width: max-content;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    text-align: center;
+} */

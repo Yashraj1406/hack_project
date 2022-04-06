@@ -1,0 +1,8 @@
+.HomeScreen{
+    /* min-height: 100%!important; */
+    background-color: #e9fafb;
+    background-size: cover;
+    /* background-size: 100% 800px!important; */
+    background-repeat: no-repeat;
+    background-image: url("/src/images/img2.jpg");
+}

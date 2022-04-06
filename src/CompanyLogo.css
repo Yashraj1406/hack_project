@@ -1,0 +1,14 @@
+.comp-logo{
+    width:80px;
+    height:80px;
+    margin-bottom: 20px;
+}
+
+.stock_value{
+    margin: 10px 0;
+    align-items: center;
+    justify-content: center;
+    width:20%;
+    display: inline-flex;
+    justify-content: space-between;
+}
