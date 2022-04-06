@@ -15,7 +15,7 @@ div {
 .twitter_embedding h2{
     font-size:2rem;
     font-weight:normal;
-    margin-bottom:50px;
+    /* margin-bottom:50px; */
 }
 
 .data {
@@ -31,11 +31,15 @@ div {
 margin-top:40px;}
 
 .sentiment {
-    padding: 180px 0px 100px 100px;
-    width: 30%;
+    margin-top: 100px;
+    align-items: center;
+    padding: 30px 0px 100px 100px;
+    width: 20%;
 }
 
 .embed {
+    margin-top: 100px;
+    flex: 1;
     width: 70%;
 }
 

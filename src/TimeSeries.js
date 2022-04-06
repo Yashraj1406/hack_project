@@ -1,4 +1,5 @@
 import React from 'react'
+import Content from './Content.js'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,6 +25,16 @@ ChartJS.register(
 
 
 function TimeSeries() {
+
+  const { alpha_vantage,tweets } = Content;
+  const dates = Object.keys(alpha_vantage);
+  const values = Object.values(alpha_vantage);
+
+  const close_value = values.map(item =>{return item['4. close']})
+  // const value = Object.values(alpha_vantage.dates['4. close'])
+  // const close_value = Object.values(value['4. close'])
+  // const [close_value] = dates_data.close;
+
   const options = {
     responsive: true,
     plugins: {
@@ -38,12 +49,12 @@ function TimeSeries() {
   };
 
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: dates,
     datasets: [
       {
         type: "line",
         label: "First dataset",
-        data: [33, 53, 85, 41, 44, 65],
+        data: close_value,
         borderColor: "#10b51e"
       }
     ]

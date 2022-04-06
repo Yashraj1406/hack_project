@@ -1,4 +1,5 @@
 import React from 'react'
+import { data } from './Content.js'
 import './fundamental.css'
 
 function Fundamental() {
@@ -11,37 +12,37 @@ function Fundamental() {
                     <td className="column1">
                         <tr className="rows">
                             <td className="left">Market Cap</td>
-                            <td className="right">$1.89T</td>
+                            <td className="right">{data.MarketCapitalization}</td>
                         </tr>
                         <tr className="rows">
                             <td className='left'>P/B ratio</td>
-                            <td className="right">7.5</td>
+                            <td className="right">{data.PriceToBookRatio}</td>
                         </tr>
                         <tr className="rows">
                             <td className='left'>P/E ratio</td>
-                            <td className="right">24.9</td>
+                            <td className="right">{data.PERatio}</td>
                         </tr>
                         <tr className="rows">
-                            <td className='left'>Enterprise</td>
-                            <td className="right">$1.9T</td>
+                            <td className='left'>Beta</td>
+                            <td className="right">{data.Beta}</td>
                         </tr>
                     </td>
                     <td className="column2">
                         <tr className="rows">
                             <td className='left'>Div. Yield</td>
-                            <td className="right">0.00%</td>
+                            <td className="right">{data.DividendYield}</td>
                         </tr>
                         <tr className="rows">
                             <td className='left'>Book Value</td>
-                            <td className="right">380.70</td>
+                            <td className="right">{data.BookValue}</td>
                         </tr>
                         <tr className="rows">
                             <td className='left'>EPS(TTM)</td>
-                            <td className="right">113.88</td>
+                            <td className="right">{data.EPS}</td>
                         </tr>
                         <tr className="rows">
                             <td className='left'>ROE</td>
-                            <td className="right">31.60%</td>
+                            <td className="right">{data.ReturnOnEquityTTM}</td>
                         </tr>
                     </td>
                 </tr>

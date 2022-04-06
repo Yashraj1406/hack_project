@@ -1,18 +1,21 @@
 import React from 'react'
 import Navbar2 from './navbar2.js'
-// import Content from './Content.js'
+import Content from './Content.js'
 import TimeSeries from './TimeSeries.js'
 import Performance from './Performance.js'
+import Tweet from './Tweet.js'
 // import Sentiments from './Sentiments.js'
 // import Footer from './Footer.js'
-import { TwitterTweetEmbed } from 'react-twitter-embed';
-import { CircularProgressbar, buildStyles, ChangingProgressProvider } from 'react-circular-progressbar';
 import Fundamental from './fundamental.js'
 import CompanyLogo from './CompanyLogo.js'
 import './profile.css'
 
 function Profile() {
-  const percentage = 80;
+
+  const tweets  = Content["tweet_ids"];
+  // const id = Object.keys(tweets);
+  // const sentiment = Object.values(tweets);
+  // const { dates,dates_data } = alpha_vantage;
 
   return (
        <div className="Profile">
@@ -32,49 +35,18 @@ function Profile() {
           </div>
           <div className="twitter_embedding">
             <h2>Trending Tweets</h2>
-            <div className="tweets">
-              <div className="embed">
-              <TwitterTweetEmbed
-                onLoad={function noRefCheck(){}}
-                placeholder={<div style={{backgroundColor: 'red', color: 'white', margin: 10, padding: 10}}>Hello I am custom placeholder</div>}
-                tweetId="1083592734038929408"
+            {Object.keys(tweets).slice(0,5).map((item) => (
+              <Tweet
+                id={item}
+                tweet_id={item}
+                sent={tweets[item]}
               />
-              </div>
-              <div className="sentiment">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`${percentage}%`}
-                    styles={buildStyles({
-                      // Rotation of path and trail, in number of turns (0-1)
-                      rotation: 0.25,
-
-                      // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                      strokeLinecap: 'butt',
-
-                      // Text size
-                      textSize: '16px',
-
-                      // How long animation takes to go from one percentage to another, in seconds
-                      pathTransitionDuration: 3,
-
-                      // Can specify path transition in more detail, or remove it entirely
-                      // pathTransition: 'none',
-
-                      // Colors
-                      pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-                      textColor: '#f88',
-                      trailColor: '#d6d6d6',
-                      backgroundColor: '#3e98c7',
-                    })}
-                  />;
-                {/* <Sentiments /> */}
-              </div>
-              </div>
+            ))}
           </div>
           <div className="footer">
               {/* <Footer /> */}
           </div>
-          </div>
+        </div>
        </div>
   )
 }
