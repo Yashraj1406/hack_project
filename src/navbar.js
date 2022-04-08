@@ -11,7 +11,7 @@ function Navbar() {
             <img src="./images/logo1.png" alt="Company_Logo"></img>
         </div>
         <div className="inner_block">      
-            <h2 onClick={() =>{navigate("/profile")}}>Home</h2>
+            <h2 onClick={() =>{navigate("/")}}>Home</h2>
             <h2 onClick={() =>{navigate("/login")}}>Login</h2>
             <h2 onClick={() =>{navigate("/signup")}}>Sign Up</h2>
         </div>

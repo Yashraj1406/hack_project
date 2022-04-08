@@ -1,5 +1,5 @@
 import React from 'react'
-import Content from './Content.js'
+import { useStateValue } from "./StateProvider";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,9 +26,9 @@ ChartJS.register(
 
 function TimeSeries() {
 
-  const { alpha_vantage,tweets } = Content;
-  const dates = Object.keys(alpha_vantage);
-  const values = Object.values(alpha_vantage);
+  const [{ param,alpha_vantage_time_series,datas, tweets }] = useStateValue();
+  const dates = Object.keys(alpha_vantage_time_series);
+  const values = Object.values(alpha_vantage_time_series);
 
   const close_value = values.map(item =>{return item['4. close']})
   // const value = Object.values(alpha_vantage.dates['4. close'])
@@ -43,7 +43,7 @@ function TimeSeries() {
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart',
+        text: 'Line Chart',
       },
     },
   };
@@ -53,7 +53,7 @@ function TimeSeries() {
     datasets: [
       {
         type: "line",
-        label: "First dataset",
+        label: "Stock_data",
         data: close_value,
         borderColor: "#10b51e"
       }

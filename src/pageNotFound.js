@@ -7,7 +7,7 @@ const PageNotFound = () => {
         <div id="wrapper" style={{margin:'50px',alignItems: 'center',justifyContent: 'center'}}>
             <img width='300' height='300' src="https://i.imgur.com/qIufhof.png" alt="404"/>
             <div id="info">
-                <h3>This page could not be found</h3>
+                <h3>This page could not be found or GET request did not return</h3>
                 <button onClick={() =>{navigate("/")}} style={{
                     marginTop:'20px',
                     padding:'10px',

@@ -1,30 +1,23 @@
 import React from 'react'
-import Content from './Content.js'
-import { data } from './Content.js'
 // import { ProgressBar } from 'react-bootstrap';
+import { useStateValue } from "./StateProvider";
 import './Performance.css'
 import ProgressBar from "@ramonak/react-progress-bar";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function Performance() {
 
-  const { alpha_vantage,tweets } = Content;
-  const dates = Object.keys(alpha_vantage);
+  const [content] = useStateValue();
+  const data = content["company_overview"]
+  const timeseries = content["alpha_vantage_time_series"]
+  const dates = Object.keys(timeseries);
 
-  var today = new Date();
-  var month = (today.getMonth()+1).toString()
-  var day =  (today.getDate()-1).toString()
-  var date = today.getFullYear()+'-'+month.padStart(2,'0')+'-'+day.padStart(2,'0');
-
-  const values = Object.values(alpha_vantage);
+  const values = Object.values(timeseries);
 
   const open_value = values.map(item =>{return item['1. open']})
   const close_value = values.map(item =>{return item['4. close']})
   const daily_high = values.map(item =>{return item['2. high']})
   const daily_low = values.map(item =>{return item['3. low']})
-  const daily_volume = values.map(item =>{return item['5. volume']})
-
-  console.log(daily_high);
 
   return (
     <div className="Performance">
@@ -36,7 +29,7 @@ function Performance() {
             <p><b>${daily_low[99]}</b></p>
           </div>
           <div className="bar">
-            <ProgressBar width='680px' bgColor="#10b51e" completed={Math.floor((2806.21/2874.24)*100)} />
+            <ProgressBar width='680px' bgColor="#10b51e" completed={Math.floor(((close_value[99]-daily_low[99])/(daily_high[99]-daily_low[99]))*100)} />
           </div>
           <div className="txt" style={{textAlign: 'right'}}>
             <p>Today's High</p>
@@ -49,7 +42,7 @@ function Performance() {
               <p><b>${data['52WeekLow']}</b></p>
             </div>
             <div className="bar">
-              <ProgressBar width='680px' bgColor="#10b51e" completed={Math.floor((2806.21/2874.24)*100)} />
+              <ProgressBar width='680px' bgColor="#10b51e" completed={Math.floor(((close_value[99]-data['52WeekLow'])/(data['52WeekHigh']-data['52WeekLow']))*100)} />
             </div>
             <div className="txt" style={{textAlign: 'right'}}>
               <p>52WeekHigh</p>

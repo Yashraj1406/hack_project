@@ -1,31 +1,30 @@
 import React from 'react'
-import Content from './Content.js'
-import { data } from './Content.js'
+import { useStateValue } from "./StateProvider";
 import './CompanyLogo.css'
 
 function CompanyLogo() {
-  const { alpha_vantage,tweets } = Content;
+  const [content] = useStateValue();
+  const data = content["company_overview"]
+  const timeseries = content["alpha_vantage_time_series"]
 
-  const values = Object.values(alpha_vantage);
+  const values = Object.values(timeseries);
 
-  const open_value = values.map(item =>{return item['1. open']})
   const close_value = values.map(item =>{return item['4. close']})
-  const daily_high = values.map(item =>{return item['2. high']})
-  const daily_low = values.map(item =>{return item['3. low']})
-  const daily_volume = values.map(item =>{return item['5. volume']})
-
+  const end_point = content["param"]
+  const url = 'https://raw.githubusercontent.com/marketreef/corporate-logos/master/logos/'
+  const final_url = url + end_point.toLowerCase() +'.jpeg'
 
   return (
     <div className="Company_det">
       <div>
-        <img className="comp-logo" src="https://cdn.pixabay.com/photo/2015/12/11/11/43/google-1088004_1280.png" alt="Google" />
+        <img className="comp-logo" src={final_url} alt={content["param"]} />
       </div>
       <div className="Company_name">
-        <h2>{data.Name}</h2>
+        <h2>{data.Name || content["param"]}</h2>
       </div>
       <div className="stock_value">
         <h2>${close_value[99]}</h2>
-        <p className="valueChange" style={{color:'green',fontWeight:'bold'}}>${(close_value[99]-close_value[98])} ({((close_value[99]-close_value[98])/close_value[98])*100}%)</p>
+        <p className="valueChange" style={{color:'green',fontWeight:'bold'}}>${(close_value[99]-close_value[98]).toFixed(2)} ({(((close_value[99]-close_value[98])/close_value[98])*100).toFixed(2)}%)</p>
       </div>
 
     </div>

@@ -1,10 +1,13 @@
-import React from 'react'
-import Content from './Content.js'
+import React, {useEffect} from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { CircularProgressbar, buildStyles, ChangingProgressProvider } from 'react-circular-progressbar';
 import './tweet.css'
 
 function Tweet(props) {
+
+  useEffect(() => {
+    console.log("Tweet")
+  },[])
   
   return (
         <div className="tweets" >
@@ -12,7 +15,7 @@ function Tweet(props) {
               <TwitterTweetEmbed
                 id={props.tweet_id}
                 onLoad={function noRefCheck(){}}
-                placeholder={<div style={{backgroundColor: 'red', color: 'white', margin: 10, padding: 10}}>Hello I am custom placeholder</div>}
+                placeholder={<div style={{backgroundColor: 'red', color: 'white', margin: 10, padding: 10}}>Please wait loading tweet.....</div>}
                 tweetId={props.tweet_id}
               />
             </div>
@@ -23,13 +26,13 @@ function Tweet(props) {
                     styles={{height: '10px'}}
                     styles={buildStyles({
                       // Rotation of path and trail, in number of turns (0-1)
-                      rotation: 0.25,
+                      rotation: 1,
 
                       // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                      strokeLinecap: 'butt',
+                      strokeLinecap: 'round',
 
                       // Text size
-                      textSize: '16px',
+                      textSize: '18px',
 
                       // How long animation takes to go from one percentage to another, in seconds
                       pathTransitionDuration: 3,

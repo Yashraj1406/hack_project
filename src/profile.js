@@ -1,25 +1,51 @@
-import React from 'react'
-import Navbar2 from './navbar2.js'
-import Content from './Content.js'
+import React ,{ useEffect, useState } from 'react'
+import Navbar from './navbar.js'
 import TimeSeries from './TimeSeries.js'
 import Performance from './Performance.js'
 import Tweet from './Tweet.js'
+import axios from './axios.js'
+import { useNavigate } from 'react-router-dom';
 // import Sentiments from './Sentiments.js'
 // import Footer from './Footer.js'
 import Fundamental from './fundamental.js'
 import CompanyLogo from './CompanyLogo.js'
+import { useStateValue } from "./StateProvider";
 import './profile.css'
 
 function Profile() {
 
-  const tweets  = Content["tweet_ids"];
+  let navigate = useNavigate();
+  const [content] = useStateValue();
+  const [ {}, dispatch] = useStateValue();
+  const tweets = content["tweet_ids"]
   // const id = Object.keys(tweets);
   // const sentiment = Object.values(tweets);
   // const { dates,dates_data } = alpha_vantage;
 
+  useEffect(() => {
+    async function fetchData() {
+
+      const request = await axios.get(content["param"]);
+        // Add item to basket...
+        dispatch({
+          type: "SET_DATA",
+          content: request.data
+        });
+      console.log(request.data)
+      console.log(content["company_overview"])
+      return request;
+    }
+  
+    fetchData()
+   .then(() => {navigate("/profile")})
+   .catch(() => {navigate("*")})
+  
+  },[])
+
+
   return (
        <div className="Profile">
-          <Navbar2 />
+          <Navbar />
           <div className="data">
           <div className="CompanyLogo">
             <CompanyLogo />
@@ -35,11 +61,11 @@ function Profile() {
           </div>
           <div className="twitter_embedding">
             <h2>Trending Tweets</h2>
-            {Object.keys(tweets).slice(0,5).map((item) => (
+            {Object.keys(content["tweet_ids"])?.slice(0,10).map((item) => (
               <Tweet
                 id={item}
                 tweet_id={item}
-                sent={tweets[item]}
+                sent={content["tweet_ids"][item]}
               />
             ))}
           </div>

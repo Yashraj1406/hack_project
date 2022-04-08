@@ -1,9 +1,12 @@
 import React from 'react'
-import { data } from './Content.js'
+import { useStateValue } from "./StateProvider";
 import './fundamental.css'
 
 function Fundamental() {
-  return (
+    const [content] = useStateValue();
+    const data = content["company_overview"];
+
+    return (
     <div className="fundamental">
         <h2>Fundamentals</h2>
         <div className="inform">
